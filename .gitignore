@@ -1,0 +1,25 @@
+# macOS 系統檔
+.DS_Store
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Vim / Neovim 暫存檔
+*.swp
+*.swo
+*.swn
+
+# VS Code 設定（如果你不打算 version control）
+.vscode/
+
+# 日誌或快照
+*.log
+
+# 系統備份檔案
+*~ 
+*.bak
+
+# 網路下載暫存
+*.download

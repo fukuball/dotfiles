@@ -28,7 +28,7 @@ brew doctor
 
 ---
 
-## 第 2 步：安裝 Oh My Zsh
+### 第 2 步：安裝 Oh My Zsh
 
 這個 dotfiles 假設你會使用 [Oh My Zsh](https://ohmyz.sh/)，並搭配內建的 robbyrussell 主題。
 
@@ -40,41 +40,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ---
 
-### 第 3 步：Clone 這個 dotfiles 專案
+### 第 3 步：安裝必要工具
 
 ```bash
-git clone git@github.com:fukuball/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+brew install git gh zsh
 ```
-
-> 如果你沒用 SSH，可以改成：
-> `git clone https://github.com/fukuball/dotfiles.git ~/dotfiles`
 
 ---
 
-### 第 4 步：執行安裝腳本
+### 第 4 步：登入 GitHub（如果尚未登入）
 
 ```bash
-cd ~/dotfiles
-./install.sh
+gh auth login
 ```
-
-這會建立 symlink 到 `.zshrc`、`.gitconfig` 等設定檔。
 
 ---
 
-### 第 5 步：安裝所有 Homebrew 套件
-
-```bash
-cd ~/dotfiles
-brew bundle --file=./Brewfile
-```
-
-這會自動安裝我常用的 CLI 工具和 GUI app（如 Chrome、Brave 等）。
-
----
-
-## 🔑 第 6 步：產生 SSH 金鑰並上傳至 GitHub
+## 🔑 第 5 步：產生 SSH 金鑰並上傳至 GitHub
 
 > 💡 本腳本會自動設定 macOS 的 ssh-agent 和 `~/.ssh/config`，讓你未來 push/pull 不再需要重複輸入密碼。
 
@@ -102,7 +84,41 @@ gh auth login
 
 ---
 
-## 🧠 第 7 步：安裝開發語言版本（Node.js, Python）
+### 第 6 步：Clone 這個 dotfiles 專案
+
+```bash
+git clone git@github.com:fukuball/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+```
+
+> 如果你沒用 SSH，可以改成：
+> `git clone https://github.com/fukuball/dotfiles.git ~/dotfiles`
+
+---
+
+### 第 7 步：執行安裝腳本
+
+```bash
+cd ~/dotfiles
+./install.sh
+```
+
+這會建立 symlink 到 `.zshrc`、`.gitconfig` 等設定檔。
+
+---
+
+### 第 8 步：安裝所有 Homebrew 套件
+
+```bash
+cd ~/dotfiles
+brew bundle --file=./Brewfile
+```
+
+這會自動安裝我常用的 CLI 工具和 GUI app（如 Chrome、Brave 等）。
+
+---
+
+## 🧠 第 9 步：安裝開發語言版本（Node.js, Python）
 
 這個 dotfiles 內含 `runtime-setup.sh`，可用來安裝常用語言版本並整合版本控：
 
@@ -137,7 +153,7 @@ cd ~/dotfiles
 - 安裝開發語言（runtime-setup.sh）
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/main/bootstrap.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/master/bootstrap.sh)"
 ```
 
 建議在 GitHub 上將你的 repo 設為 private，避免個人設定外洩。

@@ -12,11 +12,7 @@ else
   echo "✅ Homebrew 已安裝"
 fi
 
-# 2. 安裝必要工具
-echo "🔧 安裝 CLI 工具 git / gh / zsh..."
-brew install git gh zsh
-
-# 3. 安裝 Oh My Zsh（如果尚未安裝）
+# 2. 安裝 Oh My Zsh（如果尚未安裝）
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "🎩 安裝 Oh My Zsh..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -24,13 +20,17 @@ else
   echo "✅ Oh My Zsh 已安裝"
 fi
 
+# 3. 安裝必要工具
+echo "🔧 安裝 CLI 工具 git / gh / zsh..."
+brew install git gh zsh
+
 # 4. 登入 GitHub（如果尚未登入）
 if ! gh auth status &>/dev/null; then
   echo "🧑‍💻 尚未登入 GitHub，請登入..."
   gh auth login
 fi
 
-# 5. SSH 金鑰設定（如果尚未存在）
+# 5-1. SSH 金鑰設定（如果尚未存在）
 echo "🔑 設定 SSH 金鑰..."
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
   echo "📦 尚未設定 SSH，下載並執行 ssh-setup.sh..."
@@ -39,7 +39,7 @@ else
   echo "✅ SSH 金鑰已存在，略過建立"
 fi
 
-# 6. 等待 GitHub 接受 SSH 金鑰
+# 5-2. 等待 GitHub 接受 SSH 金鑰
 echo "⏳ 檢查 SSH 金鑰是否可用..."
 until ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; do
   echo "🕐 等待 GitHub 接受 SSH 金鑰..."
@@ -47,7 +47,7 @@ until ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; do
 done
 echo "🔐 SSH 認證通過！"
 
-# 7. Clone dotfiles（如果尚未 clone）
+# 6. Clone dotfiles（如果尚未 clone）
 if [ ! -d "$HOME/dotfiles" ]; then
   echo "📦 Clone dotfiles (via SSH)..."
   git clone git@github.com:fukuball/dotfiles.git ~/dotfiles
@@ -57,15 +57,15 @@ fi
 
 cd ~/dotfiles
 
-# 8. 建立 symlink + macOS 設定
+# 7. 建立 symlink + macOS 設定
 echo "🔗 執行 install.sh..."
 ./install.sh
 
-# 9. 安裝 Homebrew 套件
+# 8. 安裝 Homebrew 套件
 echo "📦 安裝 Brewfile 中的所有工具..."
 brew bundle --file=./Brewfile
 
-# 10. 安裝開發語言環境（Node.js / Python）
+# 9. 安裝開發語言環境（Node.js / Python）
 if [ -f "./runtime-setup.sh" ]; then
   echo "🔧 執行 runtime-setup.sh 安裝語言版本..."
   ./runtime-setup.sh

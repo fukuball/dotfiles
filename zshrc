@@ -21,5 +21,8 @@ source $ZSH/oh-my-zsh.sh
 # -----------------------------
 export PATH="/opt/homebrew/bin:$PATH"  # 加入 Homebrew 套件路徑（Apple Silicon 路徑）
 export EDITOR=nvim                     # 設定預設編輯器為 neovim
+
+# -----------------------------
 # 初始化 asdf
+# -----------------------------
 . /opt/homebrew/opt/asdf/libexec/asdf.sh

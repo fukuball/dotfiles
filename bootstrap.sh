@@ -16,9 +16,32 @@ fi
 echo "🔧 安裝必要 CLI 工具..."
 brew install git gh zsh
 
-# 3. Clone dotfiles（如果尚未 clone）
+# 3. 登入 GitHub（如果尚未登入）
+if ! gh auth status &>/dev/null; then
+  echo "🧑‍💻 尚未登入 GitHub，請登入..."
+  gh auth login
+fi
+
+# 4. 產生並上傳 SSH 金鑰
+echo "🔑 執行 SSH 金鑰設定..."
+if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
+  echo "📦 尚未設定 SSH，執行 ssh-setup.sh 前置..."
+  curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/main/ssh-setup.sh | bash
+else
+  echo "✅ SSH key 已存在，略過建立"
+fi
+
+# 5. 等待 GitHub 接受 SSH 金鑰
+echo "⏳ 檢查 SSH 金鑰是否可用..."
+until ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; do
+  echo "🕐 等待 GitHub 接受 SSH 金鑰..."
+  sleep 2
+done
+echo "🔐 SSH 認證通過！"
+
+# 6. Clone dotfiles（如果尚未 clone）
 if [ ! -d "$HOME/dotfiles" ]; then
-  echo "📦 Clone dotfiles..."
+  echo "📦 Clone dotfiles (via SSH)..."
   git clone git@github.com:fukuball/dotfiles.git ~/dotfiles
 else
   echo "✅ dotfiles 資料夾已存在"
@@ -26,17 +49,12 @@ fi
 
 cd ~/dotfiles
 
-# 4. 執行安裝腳本（建立 symlink + macOS 設定）
+# 7. 執行安裝腳本（建立 symlink + macOS 設定）
 echo "🔗 執行 install.sh..."
 ./install.sh
 
-# 5. 安裝 Homebrew 套件
+# 8. 安裝 Homebrew 套件
 echo "📦 安裝 Brewfile 中的所有工具..."
 brew bundle --file=./Brewfile
 
-# 6. 建立 SSH key 並上傳 GitHub（若尚未登入 gh CLI 會提示）
-echo "🔑 設定 SSH 金鑰並上傳至 GitHub..."
-./ssh-setup.sh
-
 echo "🎉 所有步驟完成！歡迎回到熟悉的開發環境 😎"
-

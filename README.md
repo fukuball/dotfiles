@@ -100,6 +100,26 @@ gh auth login
 
 ---
 
+---
+
+## 🧙 一鍵還原新機環境
+
+如果你在新電腦上，只需要執行以下一行指令，就可以自動完成：
+
+- 安裝 Homebrew
+- 安裝 git/gh/zsh 等工具
+- Clone 你的 dotfiles
+- 套用 symlink 設定與 macOS 偏好設定
+- 安裝所有套件（Brewfile）
+- 建立並上傳 SSH 金鑰至 GitHub
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/main/bootstrap.sh)"
+```
+
+建議在 GitHub 上將你的 repo 設為 private，避免個人設定外洩。
+
+
 ## 🔧 已包含的設定檔
 
 - `Brewfile`：所有使用 Homebrew 安裝的工具清單

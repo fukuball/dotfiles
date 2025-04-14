@@ -1,0 +1,7 @@
+[
+  {
+    "key": "cmd+s",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+  }
+]

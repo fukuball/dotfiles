@@ -73,4 +73,12 @@ else
   echo "⚠️ 找不到 runtime-setup.sh，略過語言安裝"
 fi
 
+# 10. 設定 VS Code
+if [ -f "./vscode/vscode-setup.sh" ]; then
+  echo "🧠 執行 VS Code 環境設定..."
+  ./vscode/vscode-setup.sh
+else
+  echo "⚠️ 找不到 vscode-setup.sh，略過 VS Code 設定"
+fi
+
 echo "🎉 所有步驟完成！歡迎回到熟悉的開發環境 😎"

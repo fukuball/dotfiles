@@ -1,6 +1,6 @@
 # 🛠 Fukuball 的 Mac 開發環境設定（dotfiles）
 
-這是我的 macOS 開發環境設定備份，透過 Homebrew、dotfiles、symlink 和簡單腳本管理，讓我在新機快速還原開發環境。
+這是針對 macOS 打造的個人開發環境 dotfiles，透過 Homebrew、symlink 與 Shell 腳本快速完成環境還原。
 
 ---
 
@@ -20,6 +20,8 @@
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
+
+> 📁 備註：本流程會將 Homebrew shellenv 加入 `~/.zprofile`，確保 Apple Silicon 使用者能正常載入 `brew`。
 
 確認 brew 可用：
 
@@ -115,7 +117,7 @@ cd ~/dotfiles
 brew bundle --file=./Brewfile
 ```
 
-這會自動安裝我常用的 CLI 工具和 GUI app（如 Chrome、Brave 等）。
+這會自動安裝常見 CLI 工具和 GUI app（如 Chrome、Brave 等）。
 
 ---
 
@@ -128,16 +130,37 @@ cd ~/dotfiles
 ./runtime-setup.sh
 ```
 
-這個腳本會：
+本腳本使用 `asdf` 統一管理多版本語言環境，具備彈性與一致性。
 
 - 安裝 `asdf` 並自動加入 zshrc 初始化
 - 安裝下列語言與版本：
   - Node.js：20.11.0（預設）與 18.19.1
   - Python：3.12.1（預設）與 2.7.18
-- 建立 symlink：`~/.tool-versions -> ~/dotfiles/.tool-versions`，可讓 `asdf` 自動偵測版本
+- 自動將 `~/dotfiles/tool-versions` symlink 至 `~/.tool-versions`，讓 `asdf` 能正確偵測語言版本
 - 安裝完成後即可使用 `asdf global` 與 `asdf local` 切換版本
 
-`.tool-versions` 已納入版本控，確保每台新機都能還原正確語言版本。
+`.tool-versions` 已納入版本控制，確保每次還原都能取得一致的語言版本。
+
+---
+
+### 第 10 步：設定 VS Code
+
+這個 dotfiles 內含一支 `vscode-setup.sh` 腳本，用來快速安裝 VS Code 的設定檔與常用擴充套件：
+
+```bash
+cd ~/dotfiles
+./vscode-setup.sh
+```
+
+這支腳本會：
+
+- 建立 symlink 至 VS Code 使用者設定
+- 安裝 `extensions.txt` 中列出的套件
+- （如有）建立 `keybindings.json`
+
+💡 若尚未設定 code CLI，請打開 VS Code 並執行：
+
+`Cmd + Shift + P` → 選擇 `Shell Command: Install 'code' command in PATH`
 
 ---
 
@@ -176,6 +199,8 @@ cd ~/dotfiles
 
 ## 📦 已安裝的套件清單（部份）
 
+所有套件皆定義於 `~/dotfiles/Brewfile`，可自行增減或調整。
+
 透過 `brew bundle` 安裝這些工具：
 
 - CLI 工具：`fzf`, `gh`, `git`, `htop`, `neovim`, `zsh`...
@@ -185,7 +210,6 @@ cd ~/dotfiles
 
 ## 🚀 待辦（可選擇性擴充）
 
-- 加入 VS Code 設定
 - 加入更多語言工具（如 `golang`, `ruby`, `poetry`, `bun`...）
 
 ---

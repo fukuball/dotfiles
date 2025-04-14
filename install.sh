@@ -7,4 +7,8 @@ ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 
 echo "✅ symlink 設定完成"
 
-# Optional: 之後可以加更多設定，例如 asdf、brew 套件等
+echo "🍎 套用 macOS 系統偏好設定..."
+./macos.sh
+
+echo "✅ install.sh 執行完畢 🎉"
+

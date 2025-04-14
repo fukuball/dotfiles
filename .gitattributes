@@ -1,0 +1,21 @@
+# 強制所有文字檔使用 LF 換行（跨平台一致）
+* text=auto eol=lf
+
+# 對這些副檔名的檔案關閉 diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.wav binary
+*.mp3 binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# 對 shell script 確保使用 UTF-8 和 LF
+*.sh text eol=lf
+
+# 對 zshrc 等明確指定為 text
+*.zshrc text
+*.gitconfig text
+*.md text

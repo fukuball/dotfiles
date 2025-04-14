@@ -28,7 +28,7 @@ brew doctor
 
 ---
 
-##  第 2 步：安裝 Oh My Zsh
+## 第 2 步：安裝 Oh My Zsh
 
 這個 dotfiles 假設你會使用 [Oh My Zsh](https://ohmyz.sh/)，並搭配內建的 robbyrussell 主題。
 
@@ -37,6 +37,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 這份設定會提供乾淨、穩定的 zsh 體驗，並搭配 Git plugin 顯示當前 branch。
+
+---
 
 ### 第 3 步：Clone 這個 dotfiles 專案
 
@@ -72,6 +74,32 @@ brew bundle --file=./Brewfile
 
 ---
 
+## 🔑 第 6 步：產生 SSH 金鑰並上傳至 GitHub
+
+這支 dotfiles 提供了自動化腳本，可以快速產生 SSH key 並將其上傳至 GitHub：
+
+```bash
+cd ~/dotfiles
+./ssh-setup.sh
+```
+
+這個腳本會自動：
+
+- 建立 `~/.ssh/id_ed25519` 金鑰（若尚未存在）
+- 加入 ssh-agent（macOS 上支援使用鑰匙圈）
+- 使用 `gh` CLI 自動將公鑰上傳到你的 GitHub 帳號
+- 金鑰會命名為：`你的電腦名稱-當前日期`
+
+請確保你已登入 `gh` CLI：
+
+```bash
+gh auth login
+```
+
+執行完成後，你就可以在這台電腦用 SSH 方式 clone/push/pull GitHub 專案了。
+
+---
+
 ## 🔧 已包含的設定檔
 
 - `Brewfile`：所有使用 Homebrew 安裝的工具清單
@@ -79,6 +107,7 @@ brew bundle --file=./Brewfile
 - `install.sh`：建立 symlink 的自動化腳本
 - `macos.sh`：macOS 系統偏好設定自動化腳本
 - `zshrc`：Shell 設定
+- `ssh-setup.sh`：SSH 金鑰自動產生與上傳 GitHub 工具
 
 ---
 

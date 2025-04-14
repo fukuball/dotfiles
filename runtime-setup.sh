@@ -54,7 +54,11 @@ python 3.12.1 2.7.18
 php 8.2.12 7.4.33
 EOF
 
-echo "🔄 重新載入 zshrc..."
-source ~/.zshrc
+if [ -n "$ZSH_VERSION" ]; then
+  echo "🔄 重新載入 zshrc..."
+  source ~/.zshrc
+else
+  echo "⚠️ 目前是 bash，請手動執行：exec zsh"
+fi
 
 echo "✅ asdf 語言環境安裝完成，現在可以使用 asdf！"

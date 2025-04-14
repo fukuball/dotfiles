@@ -57,4 +57,12 @@ echo "🔗 執行 install.sh..."
 echo "📦 安裝 Brewfile 中的所有工具..."
 brew bundle --file=./Brewfile
 
+# 9. 執行 runtime-setup.sh 安裝開發語言環境
+if [ -f "./runtime-setup.sh" ]; then
+  echo "🔧 執行 runtime-setup.sh 安裝開發語言版本..."
+  ./runtime-setup.sh
+else
+  echo "⚠️ 找不到 runtime-setup.sh，略過開發語言安裝"
+fi
+
 echo "🎉 所有步驟完成！歡迎回到熟悉的開發環境 😎"

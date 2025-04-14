@@ -78,7 +78,6 @@ brew bundle --file=./Brewfile
 
 > 💡 本腳本會自動設定 macOS 的 ssh-agent 和 `~/.ssh/config`，讓你未來 push/pull 不再需要重複輸入密碼。
 
-
 這支 dotfiles 提供了自動化腳本，可以快速產生 SSH key 並將其上傳至 GitHub：
 
 ```bash
@@ -103,6 +102,27 @@ gh auth login
 
 ---
 
+## 🧠 第 7 步：安裝開發語言版本（Node.js, Python, PHP）
+
+這個 dotfiles 內含 `runtime-setup.sh`，可用來安裝常用語言版本並整合版本控：
+
+```bash
+cd ~/dotfiles
+./runtime-setup.sh
+```
+
+這個腳本會：
+
+- 安裝 `asdf` 並自動加入 zshrc 初始化
+- 安裝下列語言與版本：
+  - Node.js：20.11.0（預設）與 18.19.1
+  - Python：3.12.1（預設）與 2.7.18
+  - PHP：8.2.12（預設）與 7.4.33
+- 建立 symlink：`~/.tool-versions -> ~/dotfiles/.tool-versions`，可讓 `asdf` 自動偵測版本
+- 安裝完成後即可使用 `asdf global` 與 `asdf local` 切換版本
+
+`.tool-versions` 已納入版本控，確保每台新機都能還原正確語言版本。
+
 ---
 
 ## 🧙 一鍵還原新機環境
@@ -115,6 +135,7 @@ gh auth login
 - 套用 symlink 設定與 macOS 偏好設定
 - 安裝所有套件（Brewfile）
 - 建立並上傳 SSH 金鑰至 GitHub
+- 安裝開發語言（runtime-setup.sh）
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/main/bootstrap.sh)"
@@ -122,6 +143,7 @@ gh auth login
 
 建議在 GitHub 上將你的 repo 設為 private，避免個人設定外洩。
 
+---
 
 ## 🔧 已包含的設定檔
 
@@ -131,6 +153,8 @@ gh auth login
 - `macos.sh`：macOS 系統偏好設定自動化腳本
 - `zshrc`：Shell 設定
 - `ssh-setup.sh`：SSH 金鑰自動產生與上傳 GitHub 工具
+- `runtime-setup.sh`：開發語言安裝腳本
+- `tool-versions`：語言版本控檔案，會自動建立 symlink
 
 ---
 
@@ -146,8 +170,7 @@ gh auth login
 ## 🚀 待辦（可選擇性擴充）
 
 - 加入 VS Code 設定
-- 加入 Node.js / Python 開發環境（如 `asdf` / `pyenv`）
-- 加入 SSH Key / GitHub 設定腳本
+- 加入更多語言工具（如 `golang`, `ruby`, `poetry`, `bun`...）
 
 ---
 

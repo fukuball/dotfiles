@@ -7,6 +7,7 @@ echo "🔗 設定 symlink 中..."
 
 ln -sf ~/dotfiles/zshrc ~/.zshrc
 ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/tool-versions ~/.tool-versions
 
 echo "✅ symlink 設定完成"
 

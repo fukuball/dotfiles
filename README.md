@@ -76,6 +76,9 @@ brew bundle --file=./Brewfile
 
 ## 🔑 第 6 步：產生 SSH 金鑰並上傳至 GitHub
 
+> 💡 本腳本會自動設定 macOS 的 ssh-agent 和 `~/.ssh/config`，讓你未來 push/pull 不再需要重複輸入密碼。
+
+
 這支 dotfiles 提供了自動化腳本，可以快速產生 SSH key 並將其上傳至 GitHub：
 
 ```bash

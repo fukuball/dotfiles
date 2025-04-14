@@ -17,9 +17,24 @@ fi
 eval "$(ssh-agent -s)"
 ssh-add --apple-use-keychain "$KEY_FILE" 2>/dev/null || ssh-add "$KEY_FILE"
 
-# Step 3: 上傳至 GitHub（需登入過 gh）
+# Step 3: 確保 ~/.ssh/config 設定 UseKeychain
+CONFIG_FILE="$HOME/.ssh/config"
+if ! grep -q "UseKeychain yes" "$CONFIG_FILE" 2>/dev/null; then
+  echo "🛠️ 設定 ~/.ssh/config..."
+  mkdir -p ~/.ssh
+  {
+    echo "Host github.com"
+    echo "  AddKeysToAgent yes"
+    echo "  UseKeychain yes"
+    echo "  IdentityFile ~/.ssh/id_ed25519"
+  } >> "$CONFIG_FILE"
+  echo "✅ 已加入 UseKeychain 設定"
+else
+  echo "✅ ~/.ssh/config 已含 UseKeychain 設定"
+fi
+
+# Step 4: 上傳至 GitHub（需登入過 gh）
 echo "☁️ 上傳 public key 到 GitHub..."
 gh ssh-key add "${KEY_FILE}.pub" --title "$(hostname)-$(date +%Y%m%d_%H%M)"
 
 echo "🎉 SSH 設定完成！"
-

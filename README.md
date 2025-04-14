@@ -56,7 +56,7 @@ gh auth login
 
 ---
 
-## 🔑 第 5 步：產生 SSH 金鑰並上傳至 GitHub
+### 第 5 步：產生 SSH 金鑰並上傳至 GitHub
 
 > 💡 本腳本會自動設定 macOS 的 ssh-agent 和 `~/.ssh/config`，讓你未來 push/pull 不再需要重複輸入密碼。
 
@@ -118,7 +118,7 @@ brew bundle --file=./Brewfile
 
 ---
 
-## 🧠 第 9 步：安裝開發語言版本（Node.js, Python）
+### 第 9 步：安裝開發語言版本（Node.js, Python）
 
 這個 dotfiles 內含 `runtime-setup.sh`，可用來安裝常用語言版本並整合版本控：
 

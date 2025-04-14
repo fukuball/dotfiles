@@ -37,4 +37,3 @@ killall Dock
 killall SystemUIServer  # menu bar / 輸入法等更新
 
 echo "✅ macOS 設定完成"
-

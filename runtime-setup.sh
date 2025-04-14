@@ -22,11 +22,10 @@ if ! grep -q 'asdf.sh' "$ZSHRC"; then
 fi
 
 # 安裝 asdf plugins
-echo "🔌 安裝 plugins：nodejs, python, php"
+echo "🔌 安裝 plugins：nodejs, python"
 
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
 asdf plugin add python https://github.com/danhper/asdf-python.git || true
-asdf plugin add php https://github.com/asdf-community/asdf-php.git || true
 
 # 安裝語言版本
 echo "📥 安裝語言版本..."
@@ -41,17 +40,11 @@ asdf install python 3.12.1
 asdf install python 2.7.18
 asdf global python 3.12.1
 
-# PHP
-asdf install php 8.2.12
-asdf install php 7.4.33
-asdf global php 8.2.12
-
 # 建立 .tool-versions 檔案
 echo "📄 寫入 .tool-versions"
 cat <<EOF > ~/.tool-versions
 nodejs 20.11.0 18.19.1
 python 3.12.1 2.7.18
-php 8.2.12 7.4.33
 EOF
 
 if [ -n "$ZSH_VERSION" ]; then

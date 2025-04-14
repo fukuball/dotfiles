@@ -102,7 +102,7 @@ gh auth login
 
 ---
 
-## 🧠 第 7 步：安裝開發語言版本（Node.js, Python, PHP）
+## 🧠 第 7 步：安裝開發語言版本（Node.js, Python）
 
 這個 dotfiles 內含 `runtime-setup.sh`，可用來安裝常用語言版本並整合版本控：
 
@@ -117,7 +117,6 @@ cd ~/dotfiles
 - 安裝下列語言與版本：
   - Node.js：20.11.0（預設）與 18.19.1
   - Python：3.12.1（預設）與 2.7.18
-  - PHP：8.2.12（預設）與 7.4.33
 - 建立 symlink：`~/.tool-versions -> ~/dotfiles/.tool-versions`，可讓 `asdf` 自動偵測版本
 - 安裝完成後即可使用 `asdf global` 與 `asdf local` 切換版本
 

@@ -33,12 +33,10 @@ echo "📥 安裝語言版本..."
 # Node.js
 asdf install nodejs 20.11.0
 asdf install nodejs 18.19.1
-asdf global nodejs 20.11.0
 
 # Python
 asdf install python 3.12.1
 asdf install python 2.7.18
-asdf global python 3.12.1
 
 # 建立 .tool-versions 檔案
 echo "📄 寫入 .tool-versions"

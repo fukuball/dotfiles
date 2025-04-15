@@ -202,6 +202,20 @@ sail ps
 sail down
 ```
 
+### 📛 Laravel Sail 多專案一鍵關閉工具
+
+如果你同時啟動多個 Laravel Sail 專案，這支小工具可以幫你一次性關閉所有容器：
+
+./sail-down-all.sh
+
+它會自動：
+
+- 掃描 ~/Code 資料夾下所有含有 vendor/bin/sail 的 Laravel 專案
+- 判斷是否為可執行的 Sail 專案
+- 執行 sail down 關閉容器
+
+✅ 若無任何專案在執行，也會顯示提示，不會報錯
+
 ---
 
 ## 🧙 一鍵還原新機環境

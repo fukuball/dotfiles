@@ -136,16 +136,12 @@ cd ~/dotfiles
 - 安裝下列語言與版本：
   - Node.js：20.11.0（預設）與 18.19.1
   - Python：3.12.1（預設）與 2.7.18
-- 自動將 `~/dotfiles/tool-versions` symlink 至 `~/.tool-versions`，讓 `asdf` 能正確偵測語言版本
-- 安裝完成後即可使用 `asdf global` 與 `asdf local` 切換版本
-
-`.tool-versions` 已納入版本控制，確保每次還原都能取得一致的語言版本。
+- 自動將 `~/dotfiles/tool-versions` symlink 至 `~/.tool-versions`
+- 每個資料夾可以建立 `.tool-versions` 定義要使用的語言版本
 
 ---
 
 ### 第 10 步：設定 VS Code
-
-這個 dotfiles 內含一支 `vscode-setup.sh` 腳本，用來快速安裝 VS Code 的設定檔與常用擴充套件：
 
 ```bash
 cd ~/dotfiles
@@ -160,57 +156,67 @@ cd ~/dotfiles
 
 💡 若尚未設定 code CLI，請打開 VS Code 並執行：
 
-`Cmd + Shift + P` → 選擇 `Shell Command: Install 'code' command in PATH`
+`Cmd + Shift + P` → `Shell Command: Install 'code' command in PATH`
+
+---
+
+## 📦 可選項目：Docker + Laravel Sail 開發環境（不需本地安裝 PHP）
+
+### 🐳 安裝 Docker Desktop
+
+```bash
+cd ~/dotfiles
+./docker-setup.sh
+```
+
+> 安裝後請手動開啟 Docker Desktop，等待右上角鯨魚圖示顯示為 Running 狀態。
+
+---
+
+### ⚙️ 建立 Laravel 專案並啟動 Sail
+
+```bash
+cd ~/dotfiles
+./sail-init.sh my-laravel-app
+```
+
+此腳本會：
+
+- 建立 `~/Code/my-laravel-app`
+- 使用官方 `laravel.build` 建立 Laravel 專案
+- 複製 `.env`
+- 建立 alias：`alias sail=./vendor/bin/sail`
+- 自動執行 `sail up -d`
+
+完成後可直接使用：
+
+```bash
+cd ~/Code/my-laravel-app
+sail artisan migrate
+```
+
+其他常用指令：
+
+```bash
+sail ps
+sail down
+```
 
 ---
 
 ## 🧙 一鍵還原新機環境
 
-如果你在新電腦上，只需要執行以下一行指令，就可以自動完成：
-
-- 安裝 Homebrew
-- 安裝 git/gh/zsh 等工具
-- Clone 你的 dotfiles
-- 套用 symlink 設定與 macOS 偏好設定
-- 安裝所有套件（Brewfile）
-- 建立並上傳 SSH 金鑰至 GitHub
-- 安裝開發語言（runtime-setup.sh）
-
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fukuball/dotfiles/master/bootstrap.sh)"
 ```
-
-建議在 GitHub 上將你的 repo 設為 private，避免個人設定外洩。
 
 ---
 
 ## 🔧 已包含的設定檔
 
-- `Brewfile`：所有使用 Homebrew 安裝的工具清單
-- `gitconfig`：Git 使用者與格式設定
-- `install.sh`：建立 symlink 的自動化腳本
-- `macos.sh`：macOS 系統偏好設定自動化腳本
-- `zshrc`：Shell 設定
-- `ssh-setup.sh`：SSH 金鑰自動產生與上傳 GitHub 工具
-- `runtime-setup.sh`：開發語言安裝腳本
-- `tool-versions`：語言版本控檔案，會自動建立 symlink
-
----
-
-## 📦 已安裝的套件清單（部份）
-
-所有套件皆定義於 `~/dotfiles/Brewfile`，可自行增減或調整。
-
-透過 `brew bundle` 安裝這些工具：
-
-- CLI 工具：`fzf`, `gh`, `git`, `htop`, `neovim`, `zsh`...
-- GUI 工具：`brave-browser`, `google-chrome`, `visual-studio-code`...
-
----
-
-## 🚀 待辦（可選擇性擴充）
-
-- 加入更多語言工具（如 `golang`, `ruby`, `poetry`, `bun`...）
+- `Brewfile`、`gitconfig`、`install.sh`、`zshrc`、`macos.sh`
+- `ssh-setup.sh`、`runtime-setup.sh`、`tool-versions`
+- `vscode-setup.sh`、`docker-setup.sh`、`sail-init.sh`
 
 ---
 

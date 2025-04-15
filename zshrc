@@ -26,3 +26,8 @@ export EDITOR=nvim                     # 設定預設編輯器為 neovim
 # 初始化 asdf
 # -----------------------------
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# -----------------------------
+# alias
+# -----------------------------
+alias sail="./vendor/bin/sail"

@@ -25,4 +25,4 @@ export EDITOR=nvim                     # 設定預設編輯器為 neovim
 # -----------------------------
 # 初始化 asdf
 # -----------------------------
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"

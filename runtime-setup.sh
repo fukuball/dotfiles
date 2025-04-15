@@ -17,7 +17,7 @@ if ! grep -q 'asdf.sh' "$ZSHRC"; then
   {
     echo ''
     echo '# 初始化 asdf'
-    echo '. /opt/homebrew/opt/asdf/libexec/asdf.sh'
+    echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"'
   } >> "$ZSHRC"
 fi
 

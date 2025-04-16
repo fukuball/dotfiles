@@ -12,7 +12,7 @@ fi
 
 # 加入 zsh 設定（如果尚未加入）
 ZSHRC=~/dotfiles/zshrc
-if ! grep -q 'asdf.sh' "$ZSHRC"; then
+if ! grep -q '.asdf' "$ZSHRC"; then
   echo "🔧 將 asdf 初始化加進 zshrc"
   {
     echo ''

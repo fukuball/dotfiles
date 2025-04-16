@@ -1,0 +1,164 @@
+{
+  "project_name": "fukuball-dotfiles",
+  "description": "macOS 開發環境設定（dotfiles），透過 Homebrew、symlink 與 Shell 腳本快速完成環境還原",
+  "last_updated": "2024-04-16",
+  "project_structure": {
+    "core_files": {
+      "bootstrap.sh": {
+        "description": "一鍵還原新機環境的腳本",
+        "features": [
+          "自動安裝 Homebrew",
+          "安裝必要工具",
+          "設定 GitHub SSH",
+          "安裝 dotfiles"
+        ]
+      },
+      "README.md": {
+        "description": "專案說明文件",
+        "features": [
+          "安裝步驟說明",
+          "功能介紹",
+          "使用指南"
+        ]
+      }
+    },
+    "setup_scripts": {
+      "install.sh": {
+        "description": "設定 symbolic links 和 macOS 系統設定的腳本",
+        "features": [
+          "建立 symbolic links",
+          "設定 macOS 系統偏好",
+          "錯誤處理機制",
+          "檔案備份功能",
+          "互動式確認",
+          "彩色輸出"
+        ]
+      },
+      "runtime-setup.sh": {
+        "description": "安裝開發語言環境的腳本",
+        "features": [
+          "安裝 asdf",
+          "設定 Node.js 和 Python",
+          "版本管理"
+        ]
+      },
+      "ssh-setup.sh": {
+        "description": "設定 SSH 金鑰的腳本",
+        "features": [
+          "產生 SSH 金鑰",
+          "設定 ssh-agent",
+          "上傳金鑰到 GitHub"
+        ]
+      },
+      "vscode-setup.sh": {
+        "description": "設定 VS Code 的腳本",
+        "features": [
+          "安裝擴充套件",
+          "設定使用者設定",
+          "設定快捷鍵"
+        ]
+      },
+      "docker-setup.sh": {
+        "description": "設定 Docker 環境的腳本",
+        "features": [
+          "安裝 Docker Desktop",
+          "基本設定"
+        ]
+      }
+    },
+    "laravel_scripts": {
+      "sail-init.sh": {
+        "description": "初始化 Laravel Sail 專案的腳本",
+        "features": [
+          "建立 Laravel 專案",
+          "設定 Sail",
+          "啟動容器"
+        ]
+      },
+      "sail-down-all.sh": {
+        "description": "關閉所有 Laravel Sail 專案的腳本",
+        "features": [
+          "掃描執行中的專案",
+          "關閉所有容器"
+        ]
+      }
+    },
+    "configuration_files": {
+      "Brewfile": {
+        "description": "Homebrew 套件清單",
+        "features": [
+          "CLI 工具",
+          "GUI 應用程式"
+        ]
+      },
+      "gitconfig": {
+        "description": "Git 設定檔",
+        "features": [
+          "使用者設定",
+          "Git 行為設定"
+        ]
+      },
+      "zshrc": {
+        "description": "Zsh 設定檔",
+        "features": [
+          "Shell 設定",
+          "路徑設定",
+          "別名設定"
+        ]
+      },
+      "tool-versions": {
+        "description": "asdf 工具版本設定",
+        "features": [
+          "Node.js 版本",
+          "Python 版本"
+        ]
+      }
+    },
+    "vscode_config": {
+      "settings.json": {
+        "description": "VS Code 使用者設定",
+        "features": [
+          "編輯器設定",
+          "工作區設定"
+        ]
+      },
+      "keybindings.json": {
+        "description": "VS Code 快捷鍵設定",
+        "features": [
+          "自訂快捷鍵"
+        ]
+      },
+      "extensions.txt": {
+        "description": "VS Code 擴充套件清單",
+        "features": [
+          "必要擴充套件"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "required": [
+      "Homebrew",
+      "Git",
+      "Zsh",
+      "Oh My Zsh"
+    ],
+    "optional": [
+      "Docker",
+      "VS Code",
+      "Laravel Sail"
+    ]
+  },
+  "installation_steps": [
+    "安裝 Homebrew",
+    "安裝 Oh My Zsh",
+    "安裝必要工具",
+    "登入 GitHub",
+    "設定 SSH",
+    "Clone dotfiles",
+    "執行安裝腳本",
+    "安裝 Homebrew 套件",
+    "安裝開發語言",
+    "設定 VS Code"
+  ]
+} 

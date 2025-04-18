@@ -22,7 +22,7 @@ defaults write com.apple.dock autohide-time-modifier -float 0.2
 
 # 鍵盤快速重複
 defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 5
+defaults write NSGlobalDomain InitialKeyRepeat -int 8
 
 # 啟用 tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true

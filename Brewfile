@@ -1,4 +1,5 @@
 brew "asdf"
+brew "ffmpeg"
 brew "fzf"
 brew "gh"
 brew "git"

@@ -19,8 +19,8 @@ source $ZSH/oh-my-zsh.sh
 # -----------------------------
 # 環境變數設定
 # -----------------------------
-export PATH="/opt/homebrew/bin:$PATH"  # 加入 Homebrew 套件路徑（Apple Silicon 路徑）
-export EDITOR=nvim                     # 設定預設編輯器為 neovim
+export PATH="/opt/homebrew/bin:$PATH"                        # 加入 Homebrew 套件路徑（Apple Silicon 路徑）
+export EDITOR=nvim                                           # 設定預設編輯器為 neovim
 
 # -----------------------------
 # 初始化 asdf
@@ -31,3 +31,8 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # alias
 # -----------------------------
 alias sail="./vendor/bin/sail"
+export PATH="$HOME/.local/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/fukuball/.local/bin:$PATH"

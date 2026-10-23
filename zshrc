@@ -31,8 +31,4 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # alias
 # -----------------------------
 alias sail="./vendor/bin/sail"
-export PATH="$HOME/.local/bin:$PATH"
-
-
-# Added by Antigravity CLI installer
-export PATH="/Users/fukuball/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"  # claude、codex、Antigravity CLI 等工具

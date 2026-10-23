@@ -1,3 +1,4 @@
 bmewburn.vscode-intelephense-client
 ms-python.python
 esbenp.prettier-vscode
+shufo.vscode-blade-formatter

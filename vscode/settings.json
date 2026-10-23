@@ -13,5 +13,11 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "[blade]": {
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter",
+    "editor.formatOnSave": true
+  },
+  "php.validate.enable": false,
+  "workbench.editor.empty.hint": "hidden"
 }
